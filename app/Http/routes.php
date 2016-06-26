@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', ['uses' => 'TestController@main']);
+Route::get('/', ['uses' => 'MainController@index', 'as' => 'main']);
 
 
 Route::group(['namespace' => 'Article', 'prefix' => 'book'], function($route)
