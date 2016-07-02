@@ -25,6 +25,8 @@ Route::get('hello-world/{name?}', function($name='Guest'){
 
 Route::group(['prefix' => 'test'], function($route){
     $route->get('hello-world', ['as' => 'hello.word', 'uses' => function(){
-        return 'route group';
+        return view('test.index');
     }]);
+
+    $route->post('form', ['as' => 'test.form', 'uses' => 'TestController@form']);
 });
