@@ -3,6 +3,13 @@
 Route::get('/', ['uses' => 'MainController@index', 'as' => 'main']);
 
 
+Route::group(['prefix' => 'ads'], function($route){
+    $route->get('create-notice', ['as' => 'create-notice', 'uses' => 'NoticeController@create']);
+    $route->post('create-notice', ['as' => 'store-notice', 'uses' => 'NoticeController@store']);
+});
+
+
+
 Route::group(['namespace' => 'Article', 'prefix' => 'book'], function($route)
 {
     Route::group(['prefix' => 'pay', 'namespace' => ''], function($route){
@@ -29,4 +36,12 @@ Route::group(['prefix' => 'test'], function($route){
     }]);
 
     $route->post('form', ['as' => 'test.form', 'uses' => 'TestController@form']);
+});
+
+
+Route::group(['prefix' => 'db'], function($route){
+    $route->get('select', 'DBController@select');
+    $route->get('insert', 'DBController@insert');
+    $route->get('delete', 'DBController@delete');
+    $route->get('update', 'DBController@update');
 });
