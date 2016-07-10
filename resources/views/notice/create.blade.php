@@ -30,6 +30,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label">Категория</label>
+                    <select name="tag[]" class="form-control" multiple>
+                        @foreach(\App\Tag::getAllTag() as $key => $tag)
+                            <option value="{{ $key }}">{{ $tag }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <input type="submit" class="btn btn-success">
                 </div>
 

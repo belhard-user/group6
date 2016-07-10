@@ -32,9 +32,11 @@ class NoticeController extends Controller
             'created_at' => new \DateTime(),
             'updated_at' => new \DateTime()
         ]));*/
-        Order::create($request->all());
+        $order = Order::create($request->all());
 
-        return redirect()->back();
+        $order->tags()->attach($request->input('tag'));
+
+        return redirect()->route('view-notice', ['id' => $order->id]);
     }
 
     public function view($id)

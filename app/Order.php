@@ -34,4 +34,9 @@ class Order extends Model
     {
         return $this->hasMany(\App\Photo::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(\App\Tag::class);
+    }
 }
