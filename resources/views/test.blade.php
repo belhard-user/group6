@@ -1,24 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>@yield('title', 'Привет люди это главная странирца')</title>
-    @section('css')
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    @show
-</head>
-<body>
-
-@include('partial.nav', ['brandName' => 'Барахолка'])
-
-<hr>
-<div class="container">
-    @yield('content')
-</div>
-<hr>
-<footer>
-    @yield('tumba')
-    copitight {{ date('Y') }}
-</footer>
-</body>
-</html>
+@foreach($photos as $photo)
+    <figure>
+        @if($photo->order)
+            <figcapture>{{ $photo->order->title }}</figcapture>
+        @endif
+        <img width="100" src="{{ $photo->path }}" alt="">
+    </figure>
+@endforeach

@@ -18,4 +18,11 @@ class TestController extends Controller
         return env('FOO', 'sadas');
         dd($request->only(["some_variable2", "some_variable3"]));
     }
+
+    public function photo()
+    {
+        $photos = \App\Photo::all();
+
+        return view('test', compact('photos'));
+    }
 }

@@ -5,7 +5,9 @@ Route::get('/', ['uses' => 'MainController@index', 'as' => 'main']);
 
 Route::group(['prefix' => 'ads'], function($route){
     $route->get('create-notice', ['as' => 'create-notice', 'uses' => 'NoticeController@create']);
+    $route->get('{id}/view-notice', ['as' => 'view-notice', 'uses' => 'NoticeController@view']);
     $route->post('create-notice', ['as' => 'store-notice', 'uses' => 'NoticeController@store']);
+    $route->post('{id}/load-photo', ['as' => 'photo-notice', 'uses' => 'NoticeController@addPhoto']);
 });
 
 
@@ -36,6 +38,7 @@ Route::group(['prefix' => 'test'], function($route){
     }]);
 
     $route->post('form', ['as' => 'test.form', 'uses' => 'TestController@form']);
+    $route->get('photo', ['as' => 'test.form', 'uses' => 'TestController@photo']);
 });
 
 
